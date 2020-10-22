@@ -21,14 +21,14 @@ class Sudoku:
 
     def make_rows(self):
         puzzle_np=self.puzzle_np
-        the_rows=[np.vsplit(puzzle_np, 9)]
+        the_rows=np.vsplit(puzzle_np, 9)
         self.the_rows=the_rows
         return the_rows # list of 9 rows
 
     def make_cols(self):
         puzzle_np=self.puzzle_np
-        the_cols=[np.hsplit(puzzle_np, 9)]
-        self.the_col=the_col
+        the_cols=np.hsplit(puzzle_np, 9)
+        self.the_cols=the_cols
         return the_cols # list of 9 cols
 
 
@@ -41,7 +41,7 @@ class Sudoku:
         #     solved=False
         #     return solved
 
-        # the_base_list=[1,2,3,4,5,6,7,8,9]
+        the_base_list=[1,2,3,4,5,6,7,8,9]
         # chunks=self.make_blocks2d()
         # for x in range (0, 3):
         #     for y in range (0, 3):
@@ -53,6 +53,21 @@ class Sudoku:
         #             return solved
         
         
+        the_cols=self.make_cols()
+        
+        for single_col in the_cols:
+           
+            
+            print("single")
+            print(single_col)
+            # result =  all(elem in single_col for elem in the_base_list)
+            # if result == False:
+            #     solved = False
+            #     return solved
+
+
+
+        the_rows=self.make_rows()
 
 
 
