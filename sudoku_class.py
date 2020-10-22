@@ -37,47 +37,44 @@ class Sudoku:
         solved=True
 
         
-        # if 0 in puzzle_np:
-        #     solved=False
-        #     return solved
+        if 0 in puzzle_np:
+            solved=False
+            return solved
 
         the_base_list=[1,2,3,4,5,6,7,8,9]
-        # chunks=self.make_blocks2d()
-        # for x in range (0, 3):
-        #     for y in range (0, 3):
-        #         flattened_chunk=chunks[x][y].flatten()
-        #         # To be true, each flattened_chunk must contain all elements in the base array in any order.
-        #         result =  all(elem in flattened_chunk for elem in the_base_list)
-        #         if result == False:
-        #             solved = False
-        #             return solved
-        
+        chunks=self.make_blocks2d()
+        for x in range (0, 3):
+            for y in range (0, 3):
+                flattened_chunk=chunks[x][y].flatten()
+                # To be true, each flattened_chunk must contain all elements in the base array in any order.
+                result =  all(elem in flattened_chunk for elem in the_base_list)
+                if result == False:
+                    solved = False
+                    return solved
         
         the_cols=self.make_cols()
-        
-        for single_col in the_cols:
-           
-            
+        for single_col in the_cols:         
             print("single")
             print(single_col)
-            # result =  all(elem in single_col for elem in the_base_list)
-            # if result == False:
-            #     solved = False
-            #     return solved
-
-
+            result =  all(elem in single_col for elem in the_base_list)
+            if result == False:
+                solved = False
+                return solved
 
         the_rows=self.make_rows()
-
-
-
-       
+        for single_row in the_rows:
+            print("single")
+            print(single_row)
+            result =  all(elem in single_row for elem in the_base_list)
+            if result == False:
+                solved = False
+                return solved
 
         self.solved=solved
         return self.solved
 
 
-theSudoku=Sudoku("s1.csv")
+theSudoku=Sudoku("ss1.csv")
 
 
 solved=theSudoku.check_solved()
