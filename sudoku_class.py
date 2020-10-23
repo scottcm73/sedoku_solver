@@ -11,6 +11,7 @@ class Sudoku:
         puzzle_np=puzzle_csv_df.to_numpy()
         print(puzzle_np)
         self.puzzle_np =puzzle_np
+        self.check_solved()
         return 
 
     def make_blocks2d(self):
@@ -35,10 +36,11 @@ class Sudoku:
     def check_solved(self):
         puzzle_np=self.puzzle_np
         solved=True
-
+        self.solved=solved
         
         if 0 in puzzle_np:
             solved=False
+            self.solved=solved
             return solved
 
         the_base_list=[1,2,3,4,5,6,7,8,9]
@@ -50,6 +52,7 @@ class Sudoku:
                 result =  all(elem in flattened_chunk for elem in the_base_list)
                 if result == False:
                     solved = False
+                    self.solved=solved
                     return solved
         
         the_cols=self.make_cols()
@@ -59,6 +62,7 @@ class Sudoku:
             result =  all(elem in single_col for elem in the_base_list)
             if result == False:
                 solved = False
+                self.solved=solved
                 return solved
 
         the_rows=self.make_rows()
@@ -68,17 +72,19 @@ class Sudoku:
             result =  all(elem in single_row for elem in the_base_list)
             if result == False:
                 solved = False
+                self.solved=solved
                 return solved
 
         self.solved=solved
+        
         return self.solved
 
 
 theSudoku=Sudoku("ss1.csv")
 
+print(theSudoku.solved)
 
-solved=theSudoku.check_solved()
-print(solved)
+
 
 
 
