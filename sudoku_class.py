@@ -100,15 +100,17 @@ class Sudoku:
         rows_copy=rows
 
         for row in rows_copy:
-            print(row)
-
+            # Removes 1 set of brackets to return a simple list
+            the_row=row[0]
+            new_row=list(filter(lambda a: a != 0, the_row))
+         
       
         
             
      
-            # remaining_nums=[x for x in new_row if x not in the_base_list]
-            # print("remaining")
-            # print(remaining_nums)
+            remaining_nums=[x for x in the_base_list if x not in new_row]
+            print("remaining")
+            print(remaining_nums)
 
 
 
